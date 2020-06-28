@@ -40,11 +40,11 @@ public class Permutations {
 
       System.out.println(stringBuilder);
     }
-
   }
 
   // Method 2: Works for all solution n > 3
-  // Instead of arranging from increasing to decreasing of odd and even numbers, arrange it from decreasing to increasing.
+  // Instead of arranging from increasing to decreasing of odd and even numbers, arrange it from
+  // decreasing to increasing.
   // TLE for large inputs.
 
   public static void findPermutation1(int n) {
