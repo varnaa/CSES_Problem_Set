@@ -6,7 +6,8 @@ import java.util.Scanner;
 
 public class AppleDivison {
   public static void main(String[] args) throws IOException {
-    // Refer: https://github.com/iamprayush/cses-problemset-solutions/blob/master/solutions/Introductory%20Problems/apple-division.cpp
+    // Refer:
+    // https://github.com/iamprayush/cses-problemset-solutions/blob/master/solutions/Introductory%20Problems/apple-division.cpp
 
     Scanner reader = new Scanner(new InputStreamReader(System.in));
     int n = reader.nextInt();
@@ -16,6 +17,8 @@ public class AppleDivison {
       array[i] = reader.nextLong();
       sum += array[i];
     }
+
+    System.out.println(partitionWithMinDifference(array, array.length - 1, 0, 0));
 
     for (int i = 0; i < 1 << n; i++) {
       long cs = 0;
@@ -31,5 +34,17 @@ public class AppleDivison {
 
     long answer = sum - 2 * ans;
     System.out.println(answer);
+  }
+
+  // Recursivve solution
+  public static long partitionWithMinDifference(Long[] array, int length, long s1, long s2) {
+    if (length < 0) {
+      return Math.abs(s1 - s2);
+    }
+
+    long set1 = partitionWithMinDifference(array, length - 1, s1 + array[length], s2);
+    long set2 = partitionWithMinDifference(array, length - 1, s1, s2 + array[length]);
+
+    return Long.min(set1, set2);
   }
 }
