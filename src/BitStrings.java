@@ -5,6 +5,7 @@ public class BitStrings {
         // Task: 1617
         Scanner scanner = new Scanner(System.in);
         long n = scanner.nextLong();
+        findBitStrings(n);
         long two = 2;
         int mod = (int) 1e9 + 7;
         long output = 1;
@@ -20,4 +21,16 @@ public class BitStrings {
 
         System.out.println(output);
     }
+
+    // solution with reduced lines of code.
+    public static void findBitStrings(long n) {
+        long output = 1;
+        for (long i = 1; i <= n; i++) {
+            output = 2 * output % ((int) 1e9 + 7);
+        }
+
+        System.out.println(output);
+    }
+
+
 }
