@@ -1,43 +1,24 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.io.BufferedOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.Scanner;
 
-// TLE for using std output and takes more than 1s to execute.
-// Solution is correct.
-
-
 public class CoinPiles {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws IOException {
     // Task:1754
-    Scanner scanner = new Scanner(System.in);
-    int testCase = scanner.nextInt();
-    List<String> output = new ArrayList<>();
+    Scanner scanner1 = new Scanner(System.in);
+    OutputStream outputStream = new BufferedOutputStream(System.out);
+    int testCase = scanner1.nextInt();
 
     for (int i = 0; i < testCase; i++) {
-      long a = scanner.nextLong();
-      long b = scanner.nextLong();
+      long a = scanner1.nextLong();
+      long b = scanner1.nextLong();
 
-      if (a > (2 * b)) {
-        output.add("NO");
+      if ((a + b) % 3 == 0 && 2 * a >= b && 2 * b >= a) {
+        outputStream.write("YES\n".getBytes());
       } else {
-        a %= 3;
-        b %= 3;
-
-        if (a < b) {
-          long temp = a;
-          a = b;
-          b = temp;
-        }
-        if ((a == 2 && b == 1) || (a == b && b == 0)) {
-          output.add("YES");
-        } else {
-          output.add("NO");
-        }
+        outputStream.write("NO\n".getBytes());
       }
-    }
-
-    for (String s : output) {
-      System.out.println(s);
     }
   }
 }
