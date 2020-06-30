@@ -1,3 +1,5 @@
+package IntroductorProblems;
+
 import java.util.Scanner;
 
 public class BitStrings {
