@@ -11,6 +11,7 @@ public class TrailingZeros {
     // Task: 1618
     BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     long input = Long.parseLong(reader.readLine());
+    findZeros(input);
     long five = 5L, output = 0;
     while (input / five >= 1) {
       output += input / five;
@@ -18,4 +19,16 @@ public class TrailingZeros {
     }
     System.out.println(output);
   }
+
+  //Solution 2:
+  public static void findZeros(long n) {
+    long count = 0;
+    for (long i = 5; i <= n; i *= 5) {
+      count += n / i;
+    }
+
+    System.out.println(count);
+  }
+
+
 }
