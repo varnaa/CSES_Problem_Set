@@ -100,17 +100,20 @@ class SegmentTree {
     index += size - 1;
     segmentTree[index] = value;
 
-    while (index > 0) {
-      int left = index;
-      int right = index;
+    int left = index;
+    int right = index;
 
+    while (index > 0) {
+      left = index;
+      right = index;
       if (index % 2 == 0) {
         right++;
+
       } else {
         left--;
       }
 
-      segmentTree[index] = Math.min(segmentTree[left], segmentTree[right]);
+      segmentTree[index] = Math.min(segmentTree[left], Math.min(right, value));
       index /= 2;
     }
 
