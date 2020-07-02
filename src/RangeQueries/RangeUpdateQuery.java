@@ -98,4 +98,13 @@ class segmentTree_Update {
     }
     System.out.println(count + " value is present between the range " + range1 + " and range" + range2);
   }
+
+  public void polynomialUpdate(int l, int r) {
+    int poly = 1;
+    for (int i = l - 1; i < r - 1; i++) {
+      array[i] += poly++;
+    }
+  }
+
+
 }
