@@ -1,6 +1,8 @@
 package RangeQueries;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class RangeUpdateQuery {
 
@@ -12,6 +14,10 @@ public class RangeUpdateQuery {
     tree_update.findValue(4);
     tree_update.updateRange(2, 5, 1);
     tree_update.findValue(4);
+    tree_update.setValues(2, 4, 3);
+    tree_update.getSum(1, 5);
+    tree_update.findDistinct(3, 6);
+    tree_update.findCount(1, 1);
   }
 }
 
@@ -28,16 +34,18 @@ class segmentTree_Update {
     for (int i = l - 1; i < r - 1; i++) {
       array[i] += value;
     }
+    System.out.println(Arrays.toString(array) + " After updating Range");
   }
 
   public void findValue(int index) {
-    System.out.println(array[index - 1]);
+    System.out.println(array[index - 1] + " is the value present at index " + (index - 1));
   }
 
-  public void setValue(int l, int r, int value) {
+  public void setValues(int l, int r, int value) {
     for (int i = l - 1; i < r - 1; i++) {
       array[i] = value;
     }
+    System.out.println(Arrays.toString(array) + " After seting values");
   }
 
   public void getSum(int l, int r) {
@@ -69,6 +77,25 @@ class segmentTree_Update {
       r /= 2;
     }
 
-    System.out.println(sum);
+    System.out.println(sum + "is the sum");
+  }
+
+  public void findDistinct(int l, int r) {
+    Set<Integer> set = new HashSet<>();
+    for (int i = l - 1; i < r - 1; i++) {
+      set.add(array[i]);
+    }
+
+    System.out.println("Distinct values are: " + set.size());
+  }
+
+  public void findCount(int range1, int range2) {
+    int count = 0;
+    for (int i : array) {
+      if (i >= range1 && i <= range2) {
+        count++;
+      }
+    }
+    System.out.println(count + " value is present between the range " + range1 + " and range" + range2);
   }
 }
